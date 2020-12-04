@@ -26,6 +26,16 @@ typo3cms phinx:seed:run
 
 Notice that these wrapper commands are executed by TYPO3, thus the full API like `DataHandler` can be used in migrations.
 
+The following paths are used for migrations:
+
+* `typo3conf/ext/*/Migrations/Phinx`
+* `typo3conf/ext/*/Classes/Migrations/Phinx`
+
+The following paths are used for seeds:
+
+* `typo3conf/ext/*/Migrations/Phinx/Seeds`
+* `typo3conf/ext/*/Classes/Migrations/Phinx/Seeds`
+
 ## Testing
 
 All tests can be executed with the shipped Docker Compose definition:
