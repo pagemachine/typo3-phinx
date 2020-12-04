@@ -1,0 +1,59 @@
+{
+    "name": "pagemachine/typo3-phinx",
+    "type": "typo3-cms-extension",
+    "description": "Phinx integration for TYPO3",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Mathias Brodala",
+            "email": "mbrodala@pagemachine.de"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "robmorgan/phinx": "^0.11 || ^0.12",
+        "typo3/cms-core": "^9.5 || ^10.4"
+    },
+    "require-dev": {
+        "cakephp/cakephp-codesniffer": "^3.0",
+        "ergebnis/composer-normalize": "^2.3",
+        "php-parallel-lint/php-console-highlighter": "^0.4.0",
+        "php-parallel-lint/php-parallel-lint": "^1.2",
+        "phpstan/phpstan": "^0.12.38",
+        "saschaegerer/phpstan-typo3": "^0.13.1",
+        "slevomat/coding-standard": "^4.0",
+        "squizlabs/php_codesniffer": "^3.1"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "phinx",
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": "web"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Pagemachine\\Phinx\\": "Classes/"
+        }
+    },
+    "scripts": {
+        "analyze:php": "phpstan analyse --ansi --no-progress --memory-limit=512M --configuration=phpstan.neon",
+        "build": [
+            "@composer require --no-progress --ansi --update-with-dependencies typo3/cms-core $TYPO3_VERSION",
+            "@composer validate --ansi",
+            "@composer normalize --no-update-lock --dry-run",
+            "@lint"
+        ],
+        "fix:style": "phpcbf",
+        "lint": [
+            "@lint:php",
+            "@lint:style",
+            "@analyze:php"
+        ],
+        "lint:php": "parallel-lint --exclude bin --exclude vendor --exclude web .",
+        "lint:style": "phpcs"
+    }
+}

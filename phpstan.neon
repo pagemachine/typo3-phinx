@@ -1,0 +1,15 @@
+includes:
+    - vendor/saschaegerer/phpstan-typo3/extension.neon
+
+parameters:
+  level: 5
+
+  paths:
+    - ext_emconf.php
+    - Classes
+
+  ignoreErrors:
+    - message: '#Variable \$_EXTKEY might not be defined#'
+      path: '*/ext_emconf.php'
+
+  reportUnmatchedIgnoredErrors: false

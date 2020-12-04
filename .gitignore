@@ -1,0 +1,6 @@
+/bin
+/composer.lock
+/node_modules
+/vendor
+/var
+/web
