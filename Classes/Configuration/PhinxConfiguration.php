@@ -24,7 +24,7 @@ final class PhinxConfiguration
                 ),
             ],
             'environments' => [
-                'default_migration_table' => 'tx_typo3base_phinxlog',
+                'default_migration_table' => 'tx_phinx_log',
                 'default_environment' => 'typo3',
                 'typo3' => [
                     'adapter' => 'mysql',
