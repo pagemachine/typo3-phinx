@@ -24,6 +24,8 @@ typo3cms phinx:seed:create
 typo3cms phinx:seed:run
 ```
 
+Notice that these wrapper commands are executed by TYPO3, thus the full API like `DataHandler` can be used in migrations.
+
 ## Testing
 
 All tests can be executed with the shipped Docker Compose definition:
