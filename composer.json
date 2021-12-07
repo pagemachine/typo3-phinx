@@ -1,8 +1,8 @@
 {
     "name": "pagemachine/typo3-phinx",
-    "type": "typo3-cms-extension",
     "description": "Phinx integration for TYPO3",
     "license": "GPL-3.0-or-later",
+    "type": "typo3-cms-extension",
     "authors": [
         {
             "name": "Mathias Brodala",
@@ -24,6 +24,11 @@
         "slevomat/coding-standard": "^7.0",
         "squizlabs/php_codesniffer": "^3.1"
     },
+    "autoload": {
+        "psr-4": {
+            "Pagemachine\\Phinx\\": "Classes/"
+        }
+    },
     "config": {
         "sort-packages": true
     },
@@ -32,11 +37,6 @@
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
             "extension-key": "phinx",
             "web-dir": "web"
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Pagemachine\\Phinx\\": "Classes/"
         }
     },
     "scripts": {
