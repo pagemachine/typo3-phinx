@@ -7,6 +7,8 @@ use TYPO3\CMS\Core\Core\Environment;
 
 final class PhinxConfiguration
 {
+    public const MIGRATION_TABLE_NAME = 'tx_phinx_log';
+
     public function toArray(): array
     {
         $extensionsPath = Environment::getExtensionsPath();
@@ -24,7 +26,7 @@ final class PhinxConfiguration
                 ),
             ],
             'environments' => [
-                'default_migration_table' => 'tx_phinx_log',
+                'default_migration_table' => self::MIGRATION_TABLE_NAME,
                 'default_environment' => 'typo3',
                 'typo3' => [
                     'adapter' => 'mysql',

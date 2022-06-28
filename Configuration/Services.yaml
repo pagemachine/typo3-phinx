@@ -37,3 +37,20 @@ services:
       - name: console.command
         command: phinx:seed:run
         schedulable: false
+
+  connection.default:
+    class: TYPO3\CMS\Core\Database\Connection
+    factory:
+      - '@TYPO3\CMS\Core\Database\ConnectionPool'
+      - getConnectionByName
+    arguments:
+      - !php/const TYPO3\CMS\Core\Database\ConnectionPool::DEFAULT_CONNECTION_NAME
+
+  Pagemachine\Phinx\EventListeners\AlterTableDefinitionStatementsEventListener:
+    arguments:
+      $connection: '@connection.default'
+    tags:
+      - name: event.listener
+        identifier: phinx-migrations
+        method: addPhinxMigrationTableSchema
+        event: TYPO3\CMS\Core\Database\Event\AlterTableDefinitionStatementsEvent
