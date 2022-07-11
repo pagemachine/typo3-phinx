@@ -37,7 +37,7 @@ final class PhinxConfiguration
         ];
     }
 
-    protected function getEnvironment(Connection $connection): array
+    private function getEnvironment(Connection $connection): array
     {
         switch ($connection->getDatabasePlatform()->getName()) {
             case 'sqlite':
