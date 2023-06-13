@@ -11,18 +11,18 @@ final class PhinxConfiguration
 
     public function toArray(): array
     {
-        $extensionsPath = Environment::getExtensionsPath();
+        $basePath = $this->getBasePath();
         $connectionParameters = $this->getConnectionParameters();
 
         return [
             'paths' => [
                 'migrations' => sprintf(
-                    '%s/*/{Migrations,Classes/Migrations}/Phinx',
-                    $extensionsPath
+                    '%s/{Migrations,Classes/Migrations}/Phinx',
+                    $basePath
                 ),
                 'seeds' => sprintf(
-                    '%s/*/{Migrations,Classes/Migrations}/Phinx/Seeds',
-                    $extensionsPath
+                    '%s/{Migrations,Classes/Migrations}/Phinx/Seeds',
+                    $basePath
                 ),
             ],
             'environments' => [
@@ -40,6 +40,22 @@ final class PhinxConfiguration
                 ],
             ],
         ];
+    }
+
+    private function getBasePath(): string
+    {
+        if ($this->isLocatedInExtensionsPath()) {
+            // <web-dir>/typo3conf/ext/*
+            return sprintf('%s/*', Environment::getExtensionsPath());
+        }
+
+        // <vendor-dir>/*/*
+        return sprintf('%s/*/*', dirname(__DIR__, 4));
+    }
+
+    private function isLocatedInExtensionsPath(): bool
+    {
+        return dirname(__DIR__, 3) === Environment::getExtensionsPath();
     }
 
     private function getConnectionParameters(): array
