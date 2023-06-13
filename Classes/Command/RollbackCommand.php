@@ -9,4 +9,5 @@ use Phinx\Console\Command\Rollback;
 final class RollbackCommand extends Rollback
 {
     use ConfigurationTrait;
+    use AuthenticatedExecutionTrait;
 }

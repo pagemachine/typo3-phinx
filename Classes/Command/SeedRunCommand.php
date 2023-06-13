@@ -9,4 +9,5 @@ use Phinx\Console\Command\SeedRun;
 final class SeedRunCommand extends SeedRun
 {
     use ConfigurationTrait;
+    use AuthenticatedExecutionTrait;
 }
