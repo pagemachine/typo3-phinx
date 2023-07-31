@@ -31,7 +31,7 @@ final class PhinxConfiguration
                 'typo3' => [
                     'adapter' => 'mysql',
                     'host' => $connectionParameters['host'],
-                    'port' => $connectionParameters['port'] ?? 3306,
+                    'port' => $connectionParameters['port'] ?? null,
                     'user' => $connectionParameters['user'],
                     'pass' => $connectionParameters['password'],
                     'name' => $connectionParameters['dbname'],
