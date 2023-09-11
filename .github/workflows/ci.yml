@@ -40,6 +40,7 @@ jobs:
           TYPO3_VERSION: ${{matrix.typo3}}
         run: |
           docker-compose pull
+          docker-compose run --rm app composer --version
           docker-compose run --rm app composer build
 
       - name: Cleanup
