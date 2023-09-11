@@ -38,7 +38,7 @@ jobs:
         env:
           PHP_VERSION: ${{matrix.php}}
           TYPO3_VERSION: ${{matrix.typo3}}
-        run: docker-compose run --rm app composer build
+        run: docker-compose run --rm app sh -c "sudo composer self-update 2.6.2 && composer build"
 
       - name: Cleanup
         if: ${{ always() }}
