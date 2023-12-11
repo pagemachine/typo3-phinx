@@ -35,7 +35,7 @@
   <rule ref="SlevomatCodingStandard.Namespaces.UseDoesNotStartWithBackslash"/>
   <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
     <properties>
-      <property name="newlinesCountBetweenOpenTagAndDeclare" type="int" value="1"/>
+      <property name="newlinesCountBeforeDeclare" type="int" value="1"/>
     </properties>
     <exclude-pattern>Configuration/*.php</exclude-pattern>
     <exclude-pattern>ext_*.php</exclude-pattern>
