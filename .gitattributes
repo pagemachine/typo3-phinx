@@ -2,6 +2,7 @@
 .gitattributes export-ignore
 .github export-ignore
 .gitignore export-ignore
+.php-cs-fixer.* export-ignore
 docker-compose.yml export-ignore
 phpcs.xml export-ignore
 phpstan.neon export-ignore
