@@ -58,7 +58,7 @@
             "@lint:style",
             "@analyze:php"
         ],
-        "lint:php": "parallel-lint --exclude bin --exclude vendor --exclude web .",
+        "lint:php": "parallel-lint --show-deprecated --exclude bin --exclude vendor --exclude web .",
         "lint:style": "php-cs-fixer fix --dry-run --diff"
     }
 }
