@@ -30,6 +30,11 @@ Notice that these wrapper commands are executed by TYPO3, thus the full API like
 
 The following paths are used for migrations:
 
+* `vendor/*/*/Migrations/Phinx`
+* `vendor/*/*/Classes/Migrations/Phinx`
+
+The following paths are used for TYPO3v11 and older:
+
 * `typo3conf/ext/*/Migrations/Phinx`
 * `typo3conf/ext/*/Classes/Migrations/Phinx`
 
@@ -46,6 +51,11 @@ the desired location.
 ## Seeds
 
 The following paths are used for seeds:
+
+* `vendor/*/*/Migrations/Phinx/Seeds`
+* `vendor/*/*/Classes/Migrations/Phinx/Seeds`
+
+The following paths are used for TYPO3v11 and older:
 
 * `typo3conf/ext/*/Migrations/Phinx/Seeds`
 * `typo3conf/ext/*/Classes/Migrations/Phinx/Seeds`
