@@ -2,29 +2,31 @@
 
 This package provides a integration of the [Phinx](https://phinx.org) database migration tool for TYPO3.
 
-All Phinx commands have been wrapped as `phinx:<command>` and can be executed using the TYPO3 CLI or TYPO3 Console:
+All Phinx commands have been wrapped as `phinx:<command>` and can be executed using the TYPO3 CLI:
 
 ```
 # Create a new migration
-typo3cms phinx:create
+typo3 phinx:create
 
 # Migrate the database
-typo3cms phinx:migrate
+typo3 phinx:migrate
 
 # Rollback the last or to a specific migration
-typo3cms phinx:rollback
+typo3 phinx:rollback
 
 # Show migration status
-typo3cms phinx:status
+typo3 phinx:status
 
 # Create a new database seeder
-typo3cms phinx:seed:create
+typo3 phinx:seed:create
 
 # Run database seeders
-typo3cms phinx:seed:run
+typo3 phinx:seed:run
 ```
 
 Notice that these wrapper commands are executed by TYPO3, thus the full API like `DataHandler` can be used in migrations.
+
+(For TYPO3v11 and TYPO3 Console 7.x or older you need to use `typo3cms` instead.)
 
 ## Migrations
 
@@ -40,7 +42,7 @@ The following paths are used for TYPO3v11 and older:
 
 Examples to create a migration in a TYPO3 project:
 
-* `typo3cms phinx:create --path packages/provider/Classes/Migrations/Phinx MyMigration`
+* `typo3 phinx:create --path packages/provider/Classes/Migrations/Phinx MyMigration`
 
 **Note**
 
@@ -62,7 +64,7 @@ The following paths are used for TYPO3v11 and older:
 
 Examples to create a seed in a TYPO3 project:
 
-* `typo3cms phinx:seed:create --path packages/provider/Classes/Migrations/Phinx/Seed MySeeder`
+* `typo3 phinx:seed:create --path packages/provider/Classes/Migrations/Phinx/Seed MySeeder`
 
 **Note**
 
