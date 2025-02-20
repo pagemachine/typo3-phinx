@@ -15,13 +15,13 @@ final class AlterTableDefinitionStatementsEventListener
 
     public function addPhinxMigrationTableSchema(AlterTableDefinitionStatementsEvent $event): void
     {
-        $schemaManager = $this->connection->getSchemaManager();
+        $schemaManager = $this->connection->createSchemaManager();
 
-        if (!$schemaManager->tablesExist(PhinxConfiguration::MIGRATION_TABLE_NAME)) {
+        if (!$schemaManager->tablesExist([PhinxConfiguration::MIGRATION_TABLE_NAME])) {
             return;
         }
 
-        $table = $schemaManager->listTableDetails(PhinxConfiguration::MIGRATION_TABLE_NAME);
+        $table = $schemaManager->introspectTable(PhinxConfiguration::MIGRATION_TABLE_NAME);
         $schemaTableSQL = $this->buildSchemaTableSQL($this->removeColumnCollations($table));
 
         $event->addSqlData($schemaTableSQL);
