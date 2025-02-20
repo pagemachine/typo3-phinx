@@ -14,7 +14,7 @@ return RectorConfig::configure()
     ->withRootFiles()
     ->withPhpSets()
     ->withSets([
-        Typo3SetList::TYPO3_11,
+        Typo3SetList::TYPO3_12,
         Typo3LevelSetList::UP_TO_TYPO3_12,
         DowngradeLevelSetList::DOWN_TO_PHP_81,
     ])
