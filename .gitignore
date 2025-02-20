@@ -1,4 +1,4 @@
-/.php-cs-fixer.cache
+/*.cache
 /bin
 /composer.lock
 /node_modules
