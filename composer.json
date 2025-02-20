@@ -49,23 +49,29 @@
         }
     },
     "scripts": {
-        "analyze:php": "phpstan analyse --ansi --no-progress --memory-limit=512M --configuration=phpstan.neon",
         "build": [
             "@composer require --no-progress --ansi --update-with-dependencies typo3/cms-core $TYPO3_VERSION",
-            "@composer validate --ansi",
-            "@composer normalize --no-update-lock --dry-run",
             "@lint"
         ],
-        "fix:style": "php-cs-fixer fix --diff",
+        "composer:lint": [
+            "@composer validate --ansi",
+            "@composer normalize --no-update-lock --dry-run"
+        ],
         "lint": [
-            "@lint:php",
-            "@lint:style",
-            "@analyze:php",
+            "@composer:lint",
+            "@php:lint"
+        ],
+        "php:lint": [
+            "@php:syntax:lint",
+            "@php:style:lint",
+            "@php:static:lint",
             "@php:rector:lint"
         ],
-        "lint:php": "parallel-lint --show-deprecated --exclude bin --exclude vendor --exclude web .",
-        "lint:style": "php-cs-fixer fix --dry-run --diff",
         "php:rector:fix": "rector",
-        "php:rector:lint": "rector --dry-run --no-progress-bar"
+        "php:rector:lint": "rector --dry-run --no-progress-bar",
+        "php:static:lint": "phpstan analyse --ansi --no-progress --memory-limit=512M --configuration=phpstan.neon",
+        "php:style:fix": "php-cs-fixer fix --diff",
+        "php:style:lint": "php-cs-fixer fix --dry-run --diff",
+        "php:syntax:lint": "parallel-lint --show-deprecated --exclude bin --exclude vendor --exclude web ."
     }
 }
