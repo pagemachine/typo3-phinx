@@ -11,12 +11,7 @@ use TYPO3\CMS\Core\Database\Event\AlterTableDefinitionStatementsEvent;
 
 final class AlterTableDefinitionStatementsEventListener
 {
-    private Connection $connection;
-
-    public function __construct(Connection $connection)
-    {
-        $this->connection = $connection;
-    }
+    public function __construct(private readonly Connection $connection) {}
 
     public function addPhinxMigrationTableSchema(AlterTableDefinitionStatementsEvent $event): void
     {
