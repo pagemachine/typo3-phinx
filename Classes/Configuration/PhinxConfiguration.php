@@ -15,7 +15,22 @@ final class PhinxConfiguration
         $connectionParameters = $this->getConnectionParameters();
 
         return [
-            'paths' => $this->getPaths(),
+            'paths' => [
+                'migrations' => [
+                    sprintf('%s/migrations/phinx', Environment::getProjectPath()),
+                    sprintf(
+                        '%s/*/*/{Migrations,Classes/Migrations}/Phinx',
+                        $this->getVendorPath(),
+                    ),
+                ],
+                'seeds' => [
+                    sprintf('%s/migrations/phinx/seeds', Environment::getProjectPath()),
+                    sprintf(
+                        '%s/*/*/{Migrations,Classes/Migrations}/Phinx/Seeds',
+                        $this->getVendorPath(),
+                    ),
+                ],
+            ],
             'environments' => [
                 'default_migration_table' => self::MIGRATION_TABLE_NAME,
                 'default_environment' => 'typo3',
@@ -31,46 +46,6 @@ final class PhinxConfiguration
                 ],
             ],
         ];
-    }
-
-    private function getPaths(): array
-    {
-        if ($this->isLocatedInExtensionsPath()) {
-            // <web-dir>/typo3conf/ext/*
-            return [
-                'migrations' => sprintf(
-                    '%s/*/{Migrations,Classes/Migrations}/Phinx',
-                    Environment::getExtensionsPath(),
-                ),
-                'seeds' => sprintf(
-                    '%s/*/{Migrations,Classes/Migrations}/Phinx/Seeds',
-                    Environment::getExtensionsPath(),
-                ),
-            ];
-        }
-
-        // <vendor-dir>/*/*
-        return [
-            'migrations' => [
-                sprintf('%s/migrations/phinx', Environment::getProjectPath()),
-                sprintf(
-                    '%s/*/*/{Migrations,Classes/Migrations}/Phinx',
-                    $this->getVendorPath(),
-                ),
-            ],
-            'seeds' => [
-                sprintf('%s/migrations/phinx/seeds', Environment::getProjectPath()),
-                sprintf(
-                    '%s/*/*/{Migrations,Classes/Migrations}/Phinx/Seeds',
-                    $this->getVendorPath(),
-                ),
-            ],
-        ];
-    }
-
-    private function isLocatedInExtensionsPath(): bool
-    {
-        return dirname(__DIR__, 3) === Environment::getExtensionsPath();
     }
 
     private function getVendorPath(): string
