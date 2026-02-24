@@ -12,20 +12,10 @@ final class PhinxConfiguration
 
     public function toArray(): array
     {
-        $basePath = $this->getBasePath();
         $connectionParameters = $this->getConnectionParameters();
 
         return [
-            'paths' => [
-                'migrations' => sprintf(
-                    '%s/{Migrations,Classes/Migrations}/Phinx',
-                    $basePath
-                ),
-                'seeds' => sprintf(
-                    '%s/{Migrations,Classes/Migrations}/Phinx/Seeds',
-                    $basePath
-                ),
-            ],
+            'paths' => $this->getPaths(),
             'environments' => [
                 'default_migration_table' => self::MIGRATION_TABLE_NAME,
                 'default_environment' => 'typo3',
@@ -43,20 +33,43 @@ final class PhinxConfiguration
         ];
     }
 
-    private function getBasePath(): string
+    private function getPaths(): array
     {
         if ($this->isLocatedInExtensionsPath()) {
             // <web-dir>/typo3conf/ext/*
-            return sprintf('%s/*', Environment::getExtensionsPath());
+            return [
+                'migrations' => sprintf(
+                    '%s/*/{Migrations,Classes/Migrations}/Phinx',
+                    Environment::getExtensionsPath(),
+                ),
+                'seeds' => sprintf(
+                    '%s/*/{Migrations,Classes/Migrations}/Phinx/Seeds',
+                    Environment::getExtensionsPath(),
+                ),
+            ];
         }
 
         // <vendor-dir>/*/*
-        return sprintf('%s/*/*', dirname(__DIR__, 4));
+        return [
+            'migrations' => sprintf(
+                '%s/*/*/{Migrations,Classes/Migrations}/Phinx',
+                $this->getVendorPath(),
+            ),
+            'seeds' => sprintf(
+                '%s/*/*/{Migrations,Classes/Migrations}/Phinx/Seeds',
+                $this->getVendorPath(),
+            ),
+        ];
     }
 
     private function isLocatedInExtensionsPath(): bool
     {
         return dirname(__DIR__, 3) === Environment::getExtensionsPath();
+    }
+
+    private function getVendorPath(): string
+    {
+        return dirname(__DIR__, 4);
     }
 
     private function getConnectionParameters(): array
