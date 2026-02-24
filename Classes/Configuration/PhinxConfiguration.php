@@ -51,14 +51,20 @@ final class PhinxConfiguration
 
         // <vendor-dir>/*/*
         return [
-            'migrations' => sprintf(
-                '%s/*/*/{Migrations,Classes/Migrations}/Phinx',
-                $this->getVendorPath(),
-            ),
-            'seeds' => sprintf(
-                '%s/*/*/{Migrations,Classes/Migrations}/Phinx/Seeds',
-                $this->getVendorPath(),
-            ),
+            'migrations' => [
+                sprintf('%s/migrations/phinx', Environment::getProjectPath()),
+                sprintf(
+                    '%s/*/*/{Migrations,Classes/Migrations}/Phinx',
+                    $this->getVendorPath(),
+                ),
+            ],
+            'seeds' => [
+                sprintf('%s/migrations/phinx/seeds', Environment::getProjectPath()),
+                sprintf(
+                    '%s/*/*/{Migrations,Classes/Migrations}/Phinx/Seeds',
+                    $this->getVendorPath(),
+                ),
+            ],
         ];
     }
 
