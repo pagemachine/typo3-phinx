@@ -26,19 +26,12 @@ typo3 phinx:seed:run
 
 Notice that these wrapper commands are executed by TYPO3, thus the full API like `DataHandler` can be used in migrations.
 
-(For TYPO3v11 and TYPO3 Console 7.x or older you need to use `typo3cms` instead.)
-
 ## Migrations
 
 The following paths are used for migrations:
 
 * `vendor/*/*/Migrations/Phinx`
 * `vendor/*/*/Classes/Migrations/Phinx`
-
-The following paths are used for TYPO3v11 and older:
-
-* `typo3conf/ext/*/Migrations/Phinx`
-* `typo3conf/ext/*/Classes/Migrations/Phinx`
 
 Examples to create a migration in a TYPO3 project:
 
@@ -56,11 +49,6 @@ The following paths are used for seeds:
 
 * `vendor/*/*/Migrations/Phinx/Seeds`
 * `vendor/*/*/Classes/Migrations/Phinx/Seeds`
-
-The following paths are used for TYPO3v11 and older:
-
-* `typo3conf/ext/*/Migrations/Phinx/Seeds`
-* `typo3conf/ext/*/Classes/Migrations/Phinx/Seeds`
 
 Examples to create a seed in a TYPO3 project:
 
