@@ -30,7 +30,7 @@ Notice that these wrapper commands are executed by TYPO3, thus the full API like
 
 The following paths are used for migrations:
 
-* `migrations/phinx` (Composer Mode)
+* `migrations/phinx`
 * `vendor/*/*/Migrations/Phinx`
 * `vendor/*/*/Classes/Migrations/Phinx`
 
@@ -48,7 +48,7 @@ the desired location.
 
 The following paths are used for seeds:
 
-* `migrations/phinx/seeds` (Composer Mode)
+* `migrations/phinx/seeds`
 * `vendor/*/*/Migrations/Phinx/Seeds`
 * `vendor/*/*/Classes/Migrations/Phinx/Seeds`
 
