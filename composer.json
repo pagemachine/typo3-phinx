@@ -13,7 +13,7 @@
         "php": "^8.2",
         "doctrine/dbal": "^3.0 || ^4.0",
         "robmorgan/phinx": ">= 0.11.0 < 1.0",
-        "symfony/console": "^6.4 || ^7.0",
+        "symfony/console": "^6.4 || ^7.0 || ^8.0",
         "typo3/cms-core": "^12.4 || ^13.4"
     },
     "require-dev": {
