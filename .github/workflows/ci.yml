@@ -24,6 +24,7 @@ jobs:
           - '8.3'
         typo3:
           - ^13.4
+          - ^14.2
 
     steps:
       - uses: actions/checkout@v6
