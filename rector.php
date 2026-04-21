@@ -15,6 +15,6 @@ return RectorConfig::configure()
         php81: true,
     )
     ->withSets([
-        Typo3LevelSetList::UP_TO_TYPO3_13,
+        Typo3LevelSetList::UP_TO_TYPO3_14,
     ])
 ;

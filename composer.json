@@ -14,7 +14,7 @@
         "doctrine/dbal": "^3.0 || ^4.0",
         "robmorgan/phinx": ">= 0.11.0 < 1.0",
         "symfony/console": "^6.4 || ^7.0",
-        "typo3/cms-core": "^13.4"
+        "typo3/cms-core": "^13.4 || ^14.2"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.3",
@@ -38,7 +38,7 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "ergebnis/composer-normalize": true,
             "typo3/class-alias-loader": true,
-            "typo3/cms-composer-installers": true
+            "typo3/cms-composer-installers": false
         },
         "sort-packages": true
     },
