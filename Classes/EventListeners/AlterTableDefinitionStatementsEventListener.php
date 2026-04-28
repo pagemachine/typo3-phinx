@@ -9,9 +9,9 @@ use Pagemachine\Phinx\Configuration\PhinxConfiguration;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\Event\AlterTableDefinitionStatementsEvent;
 
-final class AlterTableDefinitionStatementsEventListener
+final readonly class AlterTableDefinitionStatementsEventListener
 {
-    public function __construct(private readonly Connection $connection) {}
+    public function __construct(private Connection $connection) {}
 
     public function addPhinxMigrationTableSchema(AlterTableDefinitionStatementsEvent $event): void
     {
