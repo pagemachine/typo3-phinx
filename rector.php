@@ -11,9 +11,6 @@ return RectorConfig::configure()
     ])
     ->withRootFiles()
     ->withPhpSets()
-    ->withDowngradeSets(
-        php81: true,
-    )
     ->withSets([
         Typo3LevelSetList::UP_TO_TYPO3_14,
     ])
