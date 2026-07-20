@@ -43,6 +43,7 @@ final class PhinxConfiguration
                     'name' => $connectionParameters['dbname'],
                     'unix_socket' => $connectionParameters['unix_socket'] ?? null,
                     'charset' => $connectionParameters['charset'],
+                    'dsn' => $connectionParameters['url'] ?? null,
                 ],
             ],
         ];
