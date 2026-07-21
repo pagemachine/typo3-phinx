@@ -34,17 +34,17 @@ final class PhinxConfiguration
             'environments' => [
                 'default_migration_table' => self::MIGRATION_TABLE_NAME,
                 'default_environment' => 'typo3',
-                'typo3' => [
+                'typo3' => array_filter([
                     'adapter' => 'mysql',
-                    'host' => $connectionParameters['host'] ?? null,
-                    'port' => $connectionParameters['port'] ?? null,
-                    'user' => $connectionParameters['user'] ?? null,
-                    'pass' => $connectionParameters['password'] ?? null,
-                    'name' => $connectionParameters['dbname'] ?? null,
-                    'unix_socket' => $connectionParameters['unix_socket'] ?? null,
-                    'charset' => $connectionParameters['charset'] ?? null,
-                    'dsn' => $connectionParameters['url'] ?? null,
-                ],
+                    'host' => $connectionParameters['host'] ?? null ?: null,
+                    'port' => $connectionParameters['port'] ?? null ?: null,
+                    'user' => $connectionParameters['user'] ?? null ?: null,
+                    'pass' => $connectionParameters['password'] ?? null ?: null,
+                    'name' => $connectionParameters['dbname'] ?? null ?: null,
+                    'unix_socket' => $connectionParameters['unix_socket'] ?? null ?: null,
+                    'charset' => $connectionParameters['charset'] ?? null ?: null,
+                    'dsn' => $connectionParameters['url'] ?? null ?: null,
+                ]),
             ],
         ];
     }
